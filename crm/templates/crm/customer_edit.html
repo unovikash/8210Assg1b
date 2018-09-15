@@ -1,0 +1,12 @@
+{% extends 'crm/base.html' %}
+
+{% block content %}
+
+    <div>
+        <h1> Edit Customer</h1>
+        <form method="post" class="customer-form">{% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="save btn btn-default">Update</button>
+        </form>
+    </div>
+{% endblock %}
