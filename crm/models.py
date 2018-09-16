@@ -40,11 +40,11 @@ class Service(models.Model):
     updated_date = models.DateTimeField(auto_now_add=True)
 
     def created(self):
-        self.acquired_date = timezone.now()
+        self.created_date = timezone.now()
         self.save()
 
     def updated(self):
-        self.recent_date = timezone.now()
+        self.updated_date = timezone.now()
         self.save()
 
     def __str__(self):
@@ -61,11 +61,11 @@ class Product(models.Model):
     updated_date = models.DateTimeField(auto_now_add=True)
 
     def created(self):
-        self.acquired_date = timezone.now()
+        self.created_date = timezone.now()
         self.save()
 
     def updated(self):
-        self.recent_date = timezone.now()
+        self.updated_date = timezone.now()
         self.save()
 
     def __str__(self):
