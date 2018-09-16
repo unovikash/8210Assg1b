@@ -1,11 +1,12 @@
 {% extends 'crm/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
     <div>
         <h1> Edit Customer</h1>
         <form method="post" class="customer-form">{% csrf_token %}
-            {{form.as_p}}
+            <!-- {{form.as_p}} -->
+            {{form|crispy}}
             <button type="submit" class="save btn btn-default">Update</button>
         </form>
     </div>
