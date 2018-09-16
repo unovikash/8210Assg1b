@@ -1,0 +1,51 @@
+{% extends 'crm/base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="page-container">
+            <h2 class="top-menu">Hello {{user.username}},</h2>
+            <p>Please choose from the below options.</p>
+        </div>
+    {% endif %}
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="links">
+                    <!-- Example row of columns -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static 'images/customer.png' %}" alt="Customer">
+                                <div class="caption">
+                                    <h2>Customer</h2>
+                                    <p>We see our success in our customers' success</p>
+                                    <p><a class="btn btn-primary" href="{% url 'crm:customer_list'%}">View Details &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static 'images/service.png' %}" alt="Services">
+                                <div class="caption">
+                                    <h2>Services</h2>
+                                    <p>We take pride in our services</p>
+                                    <p><a class="btn btn-primary" href="{% url 'crm:customer_list'%}">View Details &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static 'images/cupcake.png' %}" alt="Products">
+                                <div class="caption">
+                                    <h2>Products</h2>
+                                    <p>We offer great products</p>
+                                    <p><a class="btn btn-primary" href="{% url 'crm:customer_list'%}">View Details &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
