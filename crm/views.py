@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import *
@@ -50,6 +51,16 @@ def customer_delete(request, pk):
     customer = get_object_or_404(Customer, pk=pk)
     customer.delete()
     return redirect('crm:customer_list')
+
+@login_required
+def summary(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+    products = Product.objects.filter(customer_name=pk)
+    sum_product_charge = Product.objects.filter(customer_name=pk).aggregate(Sum('charge'))
+    services = Service.objects.filter(customer_name=pk)
+    sum_service_charge = Service.objects.filter(customer_name=pk).aggregate(Sum('service_charge'))
+    return render(request, 'crm/summary.html', {'products': products, 'sum_product_charge': sum_product_charge
+                                                , 'services': services, 'sum_service_charge': sum_service_charge})
 
 @login_required
 def service_list(request):

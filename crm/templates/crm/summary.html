@@ -1,0 +1,101 @@
+{% extends 'crm/base.html' %}
+{% block content %}
+{% load mathfilters %}
+{% load humanize %}
+
+    <div class="row">
+        <h1>Customer Summary</h1>
+    </div>
+    <div class="row">
+        <!--{% with total_charges=sum_product_charge.charge__sum|add:sum_service_charge.service_charge__sum%}-->
+        <h2>Overall Charges (Product & Services)</h2>
+        <p>{{sum_product_charge.charge__sum|add:sum_service_charge.service_charge__sum|floatformat:2}}</p>
+        <!--{% endwith %}-->
+    </div>
+
+    <div class="row">
+        <h2>Services Information</h2>
+    </div>
+    <div class="row">
+        <table class="table table-stripped table-hover">
+            <thead>
+                <tr class="bg-info">
+                    <th>Service Category</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Setup Time</th>
+                    <th>Cleanup Time</th>
+                    <th>Service Charges</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                    <tr>
+                        <td>{{service.service_category}}</td>
+                        <td>{{service.description}}</td>
+                        <td>{{service.location}}</td>
+                        <td>{{service.setup_time}}</td>
+                        <td>{{service.cleanup_time}}</td>
+                        <td>{{service.service_charge|intcomma}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <table class="table table-stripped table-hover">
+            <thead>
+                <tr class="bg-info">
+                    <th>Total of Service Charges</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{sum_service_charge.service_charge__sum|intcomma}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <h2>Product Information</h2>
+    </div>
+    <div class="row">
+        <table class="table table-stripped table-hover">
+            <thead>
+                <tr class="bg-info">
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Pickup Time</th>
+                    <th>Total Charge</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{product.product}}</td>
+                        <td>{{product.product_description}}</td>
+                        <td>{{product.quantity|intcomma}}</td>
+                        <td>{{product.pickup_time}}</td>
+                        <td>{{product.charge|intcomma}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <table class="table table-stripped table-hover">
+            <thead>
+                <tr class="bg-info">
+                    <th>Total of Product Charges</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{sum_product_charge.charge__sum|intcomma}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
