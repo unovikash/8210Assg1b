@@ -1,13 +1,15 @@
+<!-- Used to add new customer or edit existing -->
+
 {% extends 'crm/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 
     <div>
-        <h1> Edit Customer</h1>
+        <h1>Add/Edit Customer</h1>
         <form method="post" class="customer-form">{% csrf_token %}
             <!-- {{form.as_p}} -->
             {{form|crispy}}
-            <button type="submit" class="save btn btn-default">Update</button>
+            <button type="submit" class="save btn btn-default">Save</button>
         </form>
     </div>
 {% endblock %}
