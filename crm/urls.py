@@ -7,6 +7,8 @@ app_name = 'crm'
 urlpatterns = [
     path('', views.home, name='home'),
     re_path(r'^home/$', views.home, name='home'),
+    path('signup/', views.signup, name='signup'),
+    path('password/', views.change_password, name='change_password'),
     path('customer_list/', views.customer_list, name='customer_list'),
     path('customer/<int:pk>/edit/', views.customer_edit, name='customer_edit'),
     path('customer/new/', views.customer_new, name='customer_new'),
@@ -19,5 +21,5 @@ urlpatterns = [
     path('product/create/', views.product_new, name='product_new'),
     path('product/<int:pk>/edit', views.product_edit, name='product_edit'),
     path('product/<int:pk>/delete/', views.product_delete, name='product_delete'),
-    path('customer/<int:pk>/summary/', views.summary, name='summary'), 
+    path('customer/<int:pk>/summary/', views.summary, name='summary'),
 ]

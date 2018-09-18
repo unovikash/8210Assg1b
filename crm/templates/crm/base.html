@@ -51,6 +51,11 @@
                                         <i class="fa fa-btn fa-sign-out">Logout</i>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{% url 'crm:change_password' %}">
+                                        <i class="fa fa-btn fa-sign-out">Change Password</i>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     {% else %}
@@ -58,6 +63,12 @@
                             <a href="{% url 'login' %}">
                                 <span class="glyphicon glyphicon-log-in"></span>
                                 Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'crm:signup' %}">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Signup
                             </a>
                         </li>
                     {% endif %}

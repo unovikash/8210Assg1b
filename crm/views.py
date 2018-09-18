@@ -1,6 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
 from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import View
 from .models import *
 from .forms import *
 
@@ -144,3 +148,32 @@ def product_delete(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     return redirect('crm:product_list')
+
+def signup(request):
+    if request.method=="POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user.set_password(password)
+            user.save()
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return render(request, 'crm/home.html')
+    else:
+        form = UserForm()
+    return render(request, 'registration/signup.html', {'form': form})
+
+@login_required
+def change_password(request):
+    if request.method=='POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated')
+            return render(request, 'crm/home.html')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'registration/change_password.html', {'form': form})
