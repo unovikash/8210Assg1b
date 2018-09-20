@@ -19,7 +19,10 @@
                                 <div class="caption">
                                     <h2>Customer</h2>
                                     <p>We see our success in our customers' success</p>
-                                    <p><a class="btn btn-primary" href="{% url 'crm:customer_list'%}">View Details &raquo;</a></p>
+                                    <p>
+                                        <a class="btn btn-primary" href="{% url 'crm:customer_list'%}">View Details</a>
+                                        <a style="text-align: right" class="btn btn-default" href="{% url 'crm:customer_new' %}"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +32,10 @@
                                 <div class="caption">
                                     <h2>Services</h2>
                                     <p>We take pride in our services</p>
-                                    <p><a class="btn btn-primary" href="{% url 'crm:service_list'%}">View Details &raquo;</a></p>
+                                    <p>
+                                        <a class="btn btn-primary" href="{% url 'crm:service_list'%}">View Details</a>
+                                        <a style="text-align: right" class="btn btn-default" href="{% url 'crm:service_new' %}"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +45,10 @@
                                 <div class="caption">
                                     <h2>Products</h2>
                                     <p>We offer great products</p>
-                                    <p><a class="btn btn-primary" href="{% url 'crm:product_list'%}">View Details &raquo;</a></p>
+                                    <p>
+                                        <a class="btn btn-primary" href="{% url 'crm:product_list'%}">View Details</a>
+                                        <a style="text-align: right" class="btn btn-default" href="{% url 'crm:product_new' %}"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>

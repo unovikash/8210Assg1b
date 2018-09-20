@@ -14,6 +14,9 @@
         <input class="btn btn-primary" type="submit" value="login"/>
         <input type="hidden" name="next" value="{{ next }}"/>
     </form>
+    <!--p>
+        <a href="{% url 'crm:password_reset' %}">Forgot password?</a>
+    </p-->
     <p>
         Not a User? Sign up
         <a href="{% url 'crm:signup' %}">here</a>
